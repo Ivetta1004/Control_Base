@@ -11,8 +11,6 @@ namespace Control_Base
         public string Cities;
         public string Population;
         public string Area;
-
-
     }
     class Program
     {
@@ -20,7 +18,6 @@ namespace Control_Base
         {
             Console.WriteLine("Enter list of the cities");
             string input = Console.ReadLine();
-           
             string longestName = string.Empty;
             string maxPopulated = string.Empty;
             int maxNumber = 0;
@@ -32,27 +29,21 @@ namespace Control_Base
            
             for (int i = 0; i < cities.Length; i++)
             {
-
                 city[i].Cities = cities[i].Split('=')[0];
                 city[i].Population = cities[i].Split(',')[0].Split('=')[1];
                 city[i].Area = cities[i].Split(',')[1].Split(';')[0];
-
                 if (longestName.Length < city[i].Cities.Length)
                 {
                     longestName = city[i].Cities.Trim(' ');
                 }
-
                 if (int.TryParse(city[i].Population, out int numb))
                 {
                     if (maxNumber < numb)
                     {
                         maxNumber = numb;
                         maxPopulated = city[i].Cities.Trim(' ');
-                        
                     }
-
                 }
-                
             }
             Console.Clear();
             Console.WriteLine($"Most populated: {maxPopulated} ({maxNumber} people).");
@@ -63,23 +54,16 @@ namespace Control_Base
                 if (double.TryParse(city[j].Population, out double numb))
                 {
                     population = numb;                                                                   
-
                 }
-
                 if (double.TryParse(city[j].Area, out double ar))
                 {
                     area = ar;
                 }
-               destiny = population / area;
+                destiny = population / area;
                 double destiny1 = Math.Round(destiny, 2);
                 Console.WriteLine($"\t{city[j].Cities} - {destiny1}.");
-
             }
-                                         
-            
             Console.ReadKey();                   
-                                                               
-
         }
     }
 }
